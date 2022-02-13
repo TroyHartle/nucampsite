@@ -39,9 +39,9 @@ export const addCampsites = campsites => ({
     payload: campsites
 });
 
-export const fetchComments = () => dispatch => {    
+export const fetchComments = () => (dispatch) => {    
     return fetch(baseUrl + 'comments')
-        .then(response => {
+        .then((response) => {
             if (response.ok) {
                 return response;
             } else {
@@ -55,9 +55,9 @@ export const fetchComments = () => dispatch => {
             throw errMess;
         }
     )
-        .then(response => response.json())
-        .then(comments => dispatch(addComments(comments)))
-        .catch(error => dispatch(commentsFailed(error.message)));
+        .then((response) => response.json())
+        .then((comments) => dispatch(addComments(comments)))
+        .catch((error) => dispatch(commentsFailed(error.message)));
 };
 
 export const commentsFailed = errMess => ({
